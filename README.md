@@ -15,11 +15,13 @@ I then mapped each element to its corresponding data as shown in the image below
 When data didn't match one-to-one with Figma design elements or required processing, I handled them as follows:
 
 **1. tags**
+
 When the `tags` array contains multiple elements, I prioritized displaying "Best Seller" using the following logic:
 
 - If "Best Seller" exists in the tags array, display it; otherwise, display another tag.
 
 **2. metafields**
+
 I extracted the following keys from `metafields` to create assigned values for display in the USP List.
 `product_excerpt` was excluded from the USP List as it's a product excerpt rather than a single-word feature suitable for the list format.
 
