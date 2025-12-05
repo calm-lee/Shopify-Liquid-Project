@@ -1,11 +1,12 @@
-# Planning & Specification (15 minutes)
+# Shopify Developer Test Assigment
+## Planning & Specification (15 minutes)
 
 After reviewing the Figma design, I planned the data mapping by analyzing the data structure in `collection.json` to determine which data fields to use.
 I then mapped each element to its corresponding data as shown in the image below for development.
 
 ![[Pasted image 20251205020651.png]]
 
-## Special Considerations
+### Special Considerations
 
 When data didn't match one-to-one with Figma design elements or required processing, I handled them as follows:
 
@@ -24,11 +25,11 @@ I extracted the following keys from `metafields` to create assigned values for d
   - Since these are `boolean` types, values that are `false` are not displayed based on conditional logic.
   - Currently, `low_sugar` is `false` in the data and won't display, but will appear if changed to `true` in the future.
 
----
+<br />
 
-# The Build (3 hours)
+## The Build (3 hours)
 
-## Shopify Liquid Native Features
+### Shopify Liquid Native Features
 
 Implemented rendering logic using the following flow syntax:
 
@@ -56,21 +57,21 @@ Implemented rendering logic using the following flow syntax:
 - `| minus`
   - Subtraction operation, used for displaying `saving money`
 
-## Styling
+### Styling
 
 Implemented styling using a combination of CSS and Tailwind:
 
 - For the `main.css` file, primarily used CSS classes for reusability and code cleanliness.
 - For responsive design and layout adjustments, applied Tailwind classes directly in the markup.
 
-## Semantic Code Implementation
+### Semantic Code Implementation
 
 - Used `<article>` tags for product cards to represent independent content units.
 - Used `<h2>` for product titles to maintain proper document structure.
 - Added `aria-label` and `focus-visible` to interactive elements such as buttons.
 - Implemented `alt` attributes on all images.
 
-## Additional Feature Implementation
+### Additional Feature Implementation
 
 Implemented Quantity Selector functionality to display quantity changes when pressing the `-`, `+` buttons.
 
