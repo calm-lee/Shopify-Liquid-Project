@@ -1,4 +1,4 @@
-# Shopify Developer Test Assigment
+# Shopify Developer Test Assigment (Chloe Lee)
 <br />
 
 ## Planning & Specification (15 minutes)
