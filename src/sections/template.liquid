@@ -1,4 +1,88 @@
-
-{% for product in collection.products %}
-  {{ product | json }}
-{% endfor %}
+<section class="lg:flex lg:justify-center">
+  <div class="py-10 grid gap-6 lg:flex lg:max-w-[636px]">
+    {% for product in collection.products %}
+      <article class="product-card" data-product-id="{{ product.id }}">
+        <div class="product-image relative">
+          {% for tag in product.tags %}
+            {% if tag contains 'Best Seller' %}
+              <div class="badge">Bestseller</div>
+            {% else %}
+              <div class="badge">{{ tag | capitalize }}</div>
+            {% endif %}
+          {% endfor %}
+          <div class="swiper product-swiper">
+            <div class="swiper-wrapper">
+              {% for media in product.media %}
+                <div class="swiper-slide">
+                  <img
+                    src="{{ media.preview_image.src }}"
+                    alt="{{ media.alt }}"
+                    class="w-full h-full object-cover"
+                    loading="lazy"
+                  >
+                </div>
+              {% endfor %}
+            </div>
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+        <div class="product-info lg:h-[280px]">
+          <div class="product-detail lg:h-[232px]">
+            <div class="product-content">
+              <h2 class="font-semibold text-base">{{ product.title }}</h2>
+              <div class="font-normal text-sm">{{ product.content }}</div>
+              <div class="flex flex-row gap-[8px] font-normal text-xl">
+                {{ product.price | money }}
+              </div>
+              {% assign price_diff = product.compare_at_price | minus: product.price %}
+              {% if price_diff > 0 %}
+                <div class="price-tags flex flex-row gap-[8px]">
+                  <div class="was-price">Was {{ product.compare_at_price | money }}</div>
+                  {% assign save_amount = product.compare_at_price | minus: product.price %}
+                  <div class="saving-price">Save {{ price_diff | money }}</div>
+                </div>
+              {% endif %}
+            </div>
+            <div class="product-metafields-wrapper flex-1">
+              {% assign protein_per_serving = '' %}
+              {% assign low_calories = false %}
+              {% assign low_sugar = false %}
+              {% for metafield in product.metafields %}
+                {% if metafield.key == 'protein_per_serving' and metafield.value %}
+                  {% assign protein_per_serving = metafield.value %}
+                {% elsif metafield.key == 'low_calories' and metafield.value %}
+                  {% assign low_calories = metafield.value %}
+                {% elsif metafield.key == 'low_sugar' and metafield.value %}
+                  {% assign low_sugar = metafield.value %}
+                {% endif %}
+              {% endfor %}
+              <ul class="product-metafields">
+                {% if protein_per_serving %}
+                  <li>{{ protein_per_serving }} Protein</li>
+                {% endif %}
+                {% if low_calories %}
+                  <li>Low Calories</li>
+                {% endif %}
+                {% if low_sugar %}
+                  <li>Low Sugar</li>
+                {% endif %}
+              </ul>
+            </div>
+            <div class="product-quantity shrink-0">
+              <div class="quantity-selector">
+                <button class="button" id="minus_{{ product.id }}" aria-label="Decrease quantity">
+                  <img src="/icons/minus.svg" width="14" height="2">
+                </button>
+                <span id="quantity_{{ product.id }}" aria-label="Quantity">1</span>
+                <button class="button" id="plus_{{ product.id }}" aria-label="Increase quantity">
+                  <img src="/icons/plus.svg" width="14" height="14">
+                </button>
+              </div>
+              <button class="add-to-cart flex-1" aria-label="Add {{ product.title }} to cart">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+</section>
