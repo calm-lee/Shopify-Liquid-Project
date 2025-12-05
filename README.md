@@ -1,10 +1,14 @@
 # Shopify Developer Test Assigment
+<br />
+
 ## Planning & Specification (15 minutes)
 
 After reviewing the Figma design, I planned the data mapping by analyzing the data structure in `collection.json` to determine which data fields to use.
 I then mapped each element to its corresponding data as shown in the image below for development.
 
-![[Pasted image 20251205020651.png]]
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FsFVFP%2FdJMcaaDMhQY%2FAAAAAAAAAAAAAAAAAAAAAFsiy5aEIa2bQ1mURe9EuU1Ism-NKgyTWq-f6hhswT8x%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1767193199%26allow_ip%3D%26allow_referer%3D%26signature%3DRX5DPX8SaMy5WXi64LJmRr7LyKU%253D" alt="Data Mapping Plan" width="480">
+
+
 
 ### Special Considerations
 
